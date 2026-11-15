@@ -1,5 +1,5 @@
 """Modified BLEU of Sennrich & Volk (2010): n-grams up to n (default 2), tokenised and lowercased,
-computed in both directions and combined by the harmonic mean. See docs/SPEC.md section 2.
+computed in both directions and combined by the harmonic mean.
 
 Interface shared with ChrfScorer:
     score_pairs(hyps, refs)  -> (scores, matches)   1-D arrays, item i against item i
@@ -35,7 +35,7 @@ _13A = [(re.compile(r"([\{-\~\[-\` -\&\(-\+\:-\@\/])"), r" \1 "),   # punctuatio
 def tokenize_13a(text: str) -> list[str]:
     """The tokenisation rules of the NIST script mteval-v13a (the usual BLEU tokenisation), then lowercase.
 
-    This is what reproduces the scores of the original Bleualign on its evaluation files (docs/SPEC.md 7.1).
+    This is what reproduces the scores of the original Bleualign on its evaluation files.
     Written from the published rules; tests compare it with sacrebleu's implementation.
     """
     text = text.replace("<skipped>", "").replace("-\n", "").replace("\n", " ")
@@ -75,7 +75,7 @@ class BleuScorer:
 
     @classmethod
     def reference(cls, **kwargs) -> "BleuScorer":
-        """The settings that reproduce the original Bleualign (docs/SPEC.md 7.1): 1- and 2-grams, mteval-13a
+        """The settings that reproduce the original Bleualign: 1- and 2-grams, mteval-13a
         tokens, lowercased, a pair without a common bigram (or with a one-token side) scores 0."""
         opts = dict(n=2, tokenizer=tokenize_13a, effective_order=False)
         opts.update(kwargs)

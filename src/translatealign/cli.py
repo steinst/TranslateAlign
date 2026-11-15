@@ -30,7 +30,7 @@ from .scoring import BleuScorer, ChrfScorer
 from .translate.cache import ENV as CACHE_ENV
 from .search import ANCHOR, DELIMITER, HEURISTIC, LENGTH, Bead, align_documents, flip, intersect, split_documents
 
-# bleu: the settings of the original (docs/SPEC.md 7.1). chrf: chrF++ in both directions, harmonic mean, as
+# bleu: the settings of the original. chrf: chrF++ in both directions, harmonic mean, as
 # the papers do for BLEU; chosen on the development document (docs/RESULTS.md): plain chrF++ (beta = 2, the
 # translation as hypothesis) favours recall and joins too many sentences.
 SCORERS = {"bleu": BleuScorer.reference, "chrf": lambda: ChrfScorer(both_directions=True)}

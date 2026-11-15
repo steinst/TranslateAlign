@@ -311,7 +311,7 @@ def test_anchors_identical_to_the_original(run):
         assert find_anchors(scorer, translated, target) == [tuple(a) for a in ref["anchors"]]
 
 
-# identical beads reached on 14 Nov 2026 with the original's own Gale-Church for the gaps (see docs/SPEC.md 7)
+# identical beads reached on 14 Nov 2026 with the original's own Gale-Church for the gaps
 REACHED = {"test_europarlfull": (804, 813), "test_google": (795, 813), "test_europarllight": (700, 723),
            "dev_europarlfull": (361, 374)}
 

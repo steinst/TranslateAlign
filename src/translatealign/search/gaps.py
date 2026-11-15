@@ -1,11 +1,10 @@
-"""Second pass (docs/SPEC.md section 4): the gaps between the anchors.
+"""Second pass: the gaps between the anchors.
 
 Per gap, in this order and repeated while something changes: the one-to-n heuristic, the one-to-one
 heuristic; then a length-based aligner (Gale-Church) on what is left, if the size rule allows it.
 
 The papers leave many details open. The rules below are the ones that reproduce the output of the original
 program best (found from the papers, its output, and runs of it on small inputs; its code was not read).
-Each is described in docs/SPEC.md section 7 with the evidence.
 """
 from __future__ import annotations
 
@@ -140,8 +139,8 @@ def fill_gaps(translated: Sequence[str], target: Sequence[str], anchors: Sequenc
                 us, ut = used_by_others(bead)
                 if us.intersection(ss) or ut.intersection(tt):
                     continue
-                # The changed bead must stay strictly between its neighbours on both sides (docs/SPEC.md 7.10;
-                # the original program does not check this and can cross).
+                # The changed bead must stay strictly between its neighbours on both sides.
+                # The original program does not check this and can cross.
                 if not in_order(bead, ss, tt):
                     continue
                 if tt == bead.trg:

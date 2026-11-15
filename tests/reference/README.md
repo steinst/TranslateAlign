@@ -36,7 +36,7 @@ above and on the test set in the other direction (French translated to German). 
 values: beads as `[[source numbers], [target numbers]]`, counted from 0 within the gap. No text. Made by
 `tools/record_gc_oracle.py`; re-run it if the search changes which gaps reach the length aligner. It lets the
 tests compare the heuristics with the original apart from the length aligner, whose behaviour in the original
-is not the standard algorithm (docs/SPEC.md 7.6).
+is not the standard algorithm.
 
 ## What to cite
 If you use these files or report results on this evaluation set, cite the paper that introduced the program and the

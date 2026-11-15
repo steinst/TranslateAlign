@@ -1,4 +1,4 @@
-"""Length-based alignment of what is left in a gap (docs/SPEC.md 4.3): Gale and Church (1993), through the
+"""Length-based alignment of what is left in a gap: Gale and Church (1993), through the
 `galechurch` package.
 
 A length aligner is a function (source sentences, target sentences) -> list of (source numbers, target

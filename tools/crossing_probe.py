@@ -1,4 +1,4 @@
-"""Search random small problems for a result that is not monotone (docs/SPEC.md section 7.10).
+"""Search random small problems for a result that is not monotone.
 
 A result is monotone if for consecutive beads a, b: a.src[-1] < b.src[0] and a.trg[-1] < b.trg[0], and no
 sentence is in two beads. Prints the first failing problem per scorer, minimised (sentences and words removed

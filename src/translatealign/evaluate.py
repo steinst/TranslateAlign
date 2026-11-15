@@ -1,4 +1,4 @@
-"""Strict and lax precision, recall and F1 of an alignment against a gold alignment (docs/SPEC.md section 6).
+"""Strict and lax precision, recall and F1 of an alignment against a gold alignment (docs/RESULTS.md section 1).
 
 The convention is that of the Bleualign papers, as the original program reports it:
 

@@ -90,7 +90,7 @@ def test_with_unaligned_and_per_document():
                                                 [((), (0,)), ((0, 1), (1,)), ((), (2,))]]
 
 
-# ---------------------------------------------------------------- the published table (docs/SPEC.md section 6)
+# ---------------------------------------------------------------- the published table (docs/RESULTS.md section 1)
 
 def gold_documents(name):
     ev = os.path.join(REPO, "eval")

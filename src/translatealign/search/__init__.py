@@ -1,4 +1,4 @@
-"""The search of Sennrich & Volk (2010), re-implemented from the papers (docs/SPEC.md).
+"""The search of Sennrich & Volk (2010), re-implemented from the papers.
 
     align(translated, target)              one document -> beads
     align_documents(translated, target)    files with hard delimiters -> beads with line numbers

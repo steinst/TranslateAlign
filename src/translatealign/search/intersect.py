@@ -1,4 +1,4 @@
-"""Several runs (docs/SPEC.md section 5): keep only the beads that are identical in every run."""
+"""Several runs: keep only the beads that are identical in every run."""
 from __future__ import annotations
 
 from typing import Sequence

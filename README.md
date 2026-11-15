@@ -95,8 +95,7 @@ On the Text+Berg German-French test set, with BLEU and the translation the paper
 strict F1 of the original Bleualign (0.799 against 0.807). With chrF++ and current translation models it reaches
 0.87 to 0.90 strict F1 there; SentAlign 2 (LaBSE) is about 0.03 better (0.931) where it covers the language
 pair. Details:
-[docs/RESULTS.md](https://github.com/steinst/TranslateAlign/blob/main/docs/RESULTS.md); the search as
-specified from the papers: [docs/SPEC.md](https://github.com/steinst/TranslateAlign/blob/main/docs/SPEC.md).
+[docs/RESULTS.md](https://github.com/steinst/TranslateAlign/blob/main/docs/RESULTS.md).
 
 ## What to cite
 

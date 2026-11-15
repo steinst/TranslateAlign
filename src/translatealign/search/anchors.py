@@ -1,4 +1,4 @@
-"""First pass (docs/SPEC.md section 3): candidates and the maximum-score monotone path.
+"""First pass: candidates and the maximum-score monotone path.
 
 For every translated sentence the k best-scoring target sentences are kept (score > 0); the kept pairs are
 the vertices of a graph, and the path with the highest summed score in which both sentence numbers rise
