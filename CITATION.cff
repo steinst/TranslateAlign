@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use TranslateAlign, please cite this software and the methods described in the README."
+type: software
+title: TranslateAlign
+authors:
+  - family-names: Steingrimsson
+    given-names: Steinthor
+version: 0.1.1
+license: Apache-2.0
+repository-code: "https://github.com/steinst/TranslateAlign"
+url: "https://github.com/steinst/TranslateAlign"
+abstract: "Sentence alignment using machine translation and BLEU or chrF++ similarity, reimplemented from the Bleualign publications."

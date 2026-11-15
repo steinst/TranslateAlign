@@ -1,0 +1,57 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  fast:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.10", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[test]"
+      - run: pytest -q
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install build twine
+      - run: python -m build
+      - run: twine check --strict dist/*
+      - name: no test material in the distributions
+        run: |
+          ! tar tzf dist/*.tar.gz | grep -E '/(tests|tools)/'
+          ! unzip -l dist/*.whl | grep -E 'tests/|reference'
+      - name: the wheel installs and runs
+        run: |
+          python -m venv /tmp/wheel-env
+          /tmp/wheel-env/bin/pip install dist/*.whl
+          cd /tmp && /tmp/wheel-env/bin/translatealign --bibtex > /dev/null
+          /tmp/wheel-env/bin/python -c "import translatealign; print(translatealign.__version__)"
+  reference:
+    # The tests that compare with the original Bleualign program need a clone of it (GPL-2.0: it is fetched
+    # during the run, at the commit the reference output was made with, and never put into this repository).
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: clone Bleualign at the reference commit
+        run: |
+          git clone https://github.com/rsennrich/Bleualign "$RUNNER_TEMP/bleualign"
+          git -C "$RUNNER_TEMP/bleualign" checkout 5a11b7f8831b5463d579f4fbd6f114194020fb12
+      - run: pip install -e ".[test]"
+      - name: tests, with the reference tests switched on
+        run: |
+          export TRANSLATEALIGN_BLEUALIGN_REPO="$RUNNER_TEMP/bleualign"
+          pytest -q -rs | tee pytest.log
+          # none of the reference tests may be skipped (a wrong path would skip them silently)
+          ! grep -i "set TRANSLATEALIGN_BLEUALIGN_REPO" pytest.log

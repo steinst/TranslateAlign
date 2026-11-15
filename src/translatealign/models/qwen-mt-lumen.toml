@@ -1,0 +1,26 @@
+name = "qwen-mt-lumen"
+backend = "chat"
+model = "ATH-MaaS/Qwen-MT-Lumen"
+licence = "Apache-2.0"
+description = "Lumen, WMT26 submission, 14.8 B (Qwen3-14B). Translates INTO Icelandic and the other WMT26 targets from English (and cs, zh); NOT out of Icelandic. About 29.5 GB in bf16: loaded in 4 bit."
+
+[prompt]
+mode = "chat"
+template = "Please translate the following text into {target_language}.\n#guidelines\n#src_text\n{text}"
+
+[generation]
+max_new_tokens = 256
+batch_size = 8
+stop = ["\n\n"]
+
+[retry]
+repetition_penalty = 1.3
+stop = ["\n"]
+
+[load]
+dtype = "bfloat16"
+quantization = "4bit"
+subfolder = "model_shards"       # the weights are in a subfolder of the repository
+
+[cleanup]
+lines = "join"

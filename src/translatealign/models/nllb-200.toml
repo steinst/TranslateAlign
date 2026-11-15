@@ -1,0 +1,12 @@
+name = "nllb-200"
+backend = "seq2seq"
+model = "facebook/nllb-200-distilled-1.3B"
+family = "nllb"
+licence = "CC-BY-NC-4.0: NON-COMMERCIAL use only"
+description = "NLLB-200, distilled 1.3B; 200 languages. For other sizes use --model facebook/nllb-200-distilled-600M etc."
+
+[generation]
+num_beams = 4
+
+[load]
+dtype = "float16"

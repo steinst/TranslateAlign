@@ -1,0 +1,8 @@
+# Reference fixtures have a separate licence and are not part of the package.
+# See tests/reference/README.md for their provenance and licence.
+include LICENSE README.md CITATION.cff
+recursive-include docs *.md
+prune tests
+prune tools
+prune .github
+global-exclude *.py[cod] __pycache__

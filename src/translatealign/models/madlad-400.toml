@@ -1,0 +1,12 @@
+name = "madlad-400"
+backend = "seq2seq"
+model = "google/madlad400-3b-mt"
+family = "madlad"
+licence = "Apache-2.0"
+description = "MADLAD-400 3B, 400+ languages. Weights are stored in float32 (about 12 GB); loaded as bfloat16."
+
+[generation]
+num_beams = 1
+
+[load]
+dtype = "bfloat16"

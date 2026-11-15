@@ -1,0 +1,30 @@
+name = "translategemma-12b"
+backend = "chat"
+model = "google/translategemma-12b-it"
+licence = "Gemma Terms of Use (gated model: accept the terms on Hugging Face and log in)"
+description = "TranslateGemma 12b, 55 languages."
+
+[prompt]
+mode = "chat"
+
+[prompt.content]
+type = "text"
+source_lang_code = "{source_code}"
+target_lang_code = "{target_code}"
+text = "{text}"
+
+[generation]
+max_new_tokens = 256
+batch_size = 8
+stop = ["\n\n"]
+
+[retry]
+repetition_penalty = 1.2
+stop = ["\n"]
+
+[load]
+dtype = "bfloat16"
+quantization = "4bit"
+
+[cleanup]
+lines = "join"

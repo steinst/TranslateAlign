@@ -1,0 +1,9 @@
+name = "opus-mt"
+backend = "seq2seq"
+model = "Helsinki-NLP/opus-mt-{src}-{trg}"
+family = "opus-mt"
+licence = "CC-BY-4.0 (Helsinki-NLP Opus-MT models)"
+description = "One small model per language pair; the pair must exist (de-fr, fr-de, en-is, is-en, ...)."
+
+[generation]
+num_beams = 4

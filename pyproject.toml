@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "translatealign"
+version = "0.1.1"
+description = "Sentence alignment with machine translation (an imitation of Bleualign, not the official Bleualign)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "Steinthor Steingrimsson" }]
+keywords = ["sentence alignment", "parallel corpora", "machine translation", "bleualign", "chrF"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Linguistic",
+]
+dependencies = ["numpy", "scipy", "galechurch", "tomli; python_version < '3.11'"]
+
+[project.urls]
+Homepage = "https://github.com/steinst/TranslateAlign"
+Issues = "https://github.com/steinst/TranslateAlign/issues"
+
+[project.scripts]
+translatealign = "translatealign.cli:main"
+
+[project.optional-dependencies]
+test = ["pytest", "sacrebleu"]
+dev = ["pytest", "sacrebleu", "build", "twine"]
+# translating with a model from inside the program
+models = ["torch", "transformers>=4.50", "sentencepiece", "sacremoses", "protobuf"]
+# 4-bit / 8-bit loading of large models
+quantized = ["bitsandbytes", "accelerate"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+translatealign = ["models/*.toml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
