@@ -99,7 +99,14 @@ pair. Details:
 
 ## What to cite
 
-For TranslateAlign itself, use the software metadata in [CITATION.cff](CITATION.cff).
+Please cite the software as:
+
+> Steingrimsson, Steinthor (2026). *TranslateAlign* (version 0.1.2) [Software].
+> https://github.com/steinst/TranslateAlign
+
+The program shows this citation and the repository link after each run.
+`translatealign --bibtex` prints its BibTeX entry together with the methods used.
+Machine-readable metadata is in [CITATION.cff](CITATION.cff).
 
 The program prints what to cite after each run (`--bibtex` for BibTeX): the two papers the search comes from,
 

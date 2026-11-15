@@ -1,6 +1,6 @@
 # TranslateAlign – results
 
-Alignment results for version 0.1.1, evaluated on 15 November 2026. Scores use the
+Alignment results for version 0.1.2, evaluated on 15 November 2026. Scores use the
 current alignment code and stored translations.
 
 **Strict precision, recall and F1** require an exact match to a gold alignment bead

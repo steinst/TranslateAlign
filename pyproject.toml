@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "translatealign"
-version = "0.1.1"
+version = "0.1.2"
 description = "Sentence alignment with machine translation (an imitation of Bleualign, not the official Bleualign)"
 readme = "README.md"
 requires-python = ">=3.10"

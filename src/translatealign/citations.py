@@ -1,4 +1,4 @@
-"""What to cite for a run: the two Bleualign papers, the similarity score, Gale-Church, the translation model.
+"""What to cite for a run: TranslateAlign, the two Bleualign papers, the similarity score, Gale-Church, the translation model.
 
     cites = for_run(scorer="chrf", models=[model_definition(model="opus-mt")])
     print(format_text(cites))       # one line per work (printed by the command line after each run)
@@ -12,6 +12,8 @@ from __future__ import annotations
 import re
 from typing import Iterable, NamedTuple, Optional, Sequence
 
+from . import __version__
+
 
 class Citation(NamedTuple):
     key: str
@@ -22,6 +24,20 @@ class Citation(NamedTuple):
 def _c(key: str, text: str, bibtex: str) -> Citation:
     return Citation(key, text, bibtex.strip())
 
+
+REPOSITORY = "https://github.com/steinst/TranslateAlign"
+TRANSLATEALIGN = _c(
+    "steingrimsson-translatealign-2026",
+    f"Steinthor Steingrimsson (2026). TranslateAlign (version {__version__}) [Software]. "
+    f"See GitHub repo steinst/TranslateAlign: {REPOSITORY}",
+    f"""@software{{steingrimsson-translatealign-2026,
+  author = {{Steingrimsson, Steinthor}},
+  title = {{TranslateAlign}},
+  year = {{2026}},
+  version = {{{__version__}}},
+  url = {{{REPOSITORY}}}
+}}""",
+)
 
 SENNRICH_2010 = _c("sennrich-volk-2010", "Rico Sennrich and Martin Volk (2010). MT-based Sentence Alignment for "
                    "OCR-generated Parallel Texts. AMTA 2010.", """
@@ -166,7 +182,7 @@ def _bibtex_title(entry: str) -> str:
 
 def for_run(scorer: str = "chrf", models: Iterable = (), translation_files: bool = False) -> list:
     """Everything a run used: the papers of the search, Gale-Church, the scorer, each model (definitions)."""
-    out = [SENNRICH_2010, SENNRICH_2011, GALE_CHURCH] + SCORERS[scorer]
+    out = [TRANSLATEALIGN, SENNRICH_2010, SENNRICH_2011, GALE_CHURCH] + SCORERS[scorer]
     for d in models:
         out.append(for_model(d))
     if translation_files:

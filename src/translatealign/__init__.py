@@ -5,7 +5,7 @@
     print(translatealign.cite())
 """
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 from .api import Pair, align, cite, read_lines  # noqa: E402  (after __version__: cli imports it)
 

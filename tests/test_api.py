@@ -45,13 +45,15 @@ def test_errors():
 
 def test_citations_of_a_run():
     keys = [c.key for c in citations.for_run("chrf")]
-    assert keys == ["sennrich-volk-2010", "sennrich-volk-2011", "gale-church-1993", "popovic-2015", "popovic-2017"]
+    assert keys == ["steingrimsson-translatealign-2026", "sennrich-volk-2010", "sennrich-volk-2011", "gale-church-1993", "popovic-2015", "popovic-2017"]
     assert "papineni-etal-2002" in [c.key for c in citations.for_run("bleu")]
     text = translatealign.cite(model="opus-mt")
     assert "Tiedemann" in text and "Sennrich" in text and "chrF++" in text
     assert "translation file" in translatealign.cite()
+    assert f"TranslateAlign (version {translatealign.__version__})" in text
+    assert "See GitHub repo steinst/TranslateAlign: https://github.com/steinst/TranslateAlign" in text
     bib = translatealign.cite(scorer="bleu", model="facebook/nllb-200-distilled-600M", bibtex=True)
-    assert bib.count("@") == 5 and "nllb-2022" in bib and bib.count("{") == bib.count("}")
+    assert bib.count("@") == 6 and "nllb-2022" in bib and bib.count("{") == bib.count("}")
 
 
 def test_model_citations():
@@ -70,10 +72,12 @@ def test_model_citations():
 def test_command_line_citations(tmp_path, capsys):
     assert cli.main(["--bibtex", "--scorer", "bleu"]) == 0
     out = capsys.readouterr().out
+    assert "@software{steingrimsson-translatealign-2026," in out
     assert "@inproceedings{papineni-etal-2002," in out and "sennrich-volk-2011" in out
     files = {n: write(tmp_path, n, lines) for n, lines in (("s", SRC), ("t", TRG), ("tr", TRANSLATION))}
     assert cli.main([files["s"], files["t"], "--translation", files["tr"], "-o", str(tmp_path / "o")]) == 0
     captured = capsys.readouterr()
+    assert "See GitHub repo steinst/TranslateAlign" in captured.err
     assert "Please cite" in captured.err and "Popović (2017)" in captured.err and captured.out == ""
     assert cli.main([files["s"], files["t"], "--translation", files["tr"], "-o", str(tmp_path / "o"), "-q",
                      "--bibtex"]) == 0
