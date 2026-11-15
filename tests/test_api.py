@@ -50,9 +50,11 @@ def test_citations_of_a_run():
     text = translatealign.cite(model="opus-mt")
     assert "Tiedemann" in text and "Sennrich" in text and "chrF++" in text
     assert "translation file" in translatealign.cite()
+    assert "https://doi.org/10.5281/zenodo.24248223" in text
     assert f"TranslateAlign (version {translatealign.__version__})" in text
     assert "See GitHub repo steinst/TranslateAlign: https://github.com/steinst/TranslateAlign" in text
     bib = translatealign.cite(scorer="bleu", model="facebook/nllb-200-distilled-600M", bibtex=True)
+    assert "doi = {10.5281/zenodo.24248223}" in bib
     assert bib.count("@") == 6 and "nllb-2022" in bib and bib.count("{") == bib.count("}")
 
 

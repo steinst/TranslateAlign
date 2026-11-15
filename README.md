@@ -102,7 +102,7 @@ pair. Details:
 Please cite the software as:
 
 > Steingrimsson, Steinthor (2026). *TranslateAlign* (version 0.1.2) [Software].
-> https://github.com/steinst/TranslateAlign
+> https://doi.org/10.5281/zenodo.24248223
 
 The program shows this citation and the repository link after each run.
 `translatealign --bibtex` prints its BibTeX entry together with the methods used.

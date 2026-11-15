@@ -26,15 +26,17 @@ def _c(key: str, text: str, bibtex: str) -> Citation:
 
 
 REPOSITORY = "https://github.com/steinst/TranslateAlign"
+SOFTWARE_DOI = "10.5281/zenodo.24248223"
 TRANSLATEALIGN = _c(
     "steingrimsson-translatealign-2026",
     f"Steinthor Steingrimsson (2026). TranslateAlign (version {__version__}) [Software]. "
-    f"See GitHub repo steinst/TranslateAlign: {REPOSITORY}",
+    f"https://doi.org/{SOFTWARE_DOI}. See GitHub repo steinst/TranslateAlign: {REPOSITORY}",
     f"""@software{{steingrimsson-translatealign-2026,
   author = {{Steingrimsson, Steinthor}},
   title = {{TranslateAlign}},
   year = {{2026}},
   version = {{{__version__}}},
+  doi = {{{SOFTWARE_DOI}}},
   url = {{{REPOSITORY}}}
 }}""",
 )

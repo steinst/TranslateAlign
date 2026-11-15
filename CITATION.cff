@@ -6,6 +6,7 @@ authors:
   - family-names: Steingrimsson
     given-names: Steinthor
 version: 0.1.2
+doi: 10.5281/zenodo.24248223
 date-released: 2026-11-15
 license: Apache-2.0
 repository-code: "https://github.com/steinst/TranslateAlign"
